@@ -13,20 +13,22 @@ stdin.addListener("data", (txt) => {
     }   
   });
 
- // #1 
+// HomeWork 1
+
+ // Write a JS program to compute and print the sum of the two given integers
 
  let num1 = 5;
  let num2 = 7;
  console.log(num1 + num2);
 
- // #2
+ // 2. Write a JS program to create a new string adding “Test_" in front of a given string
 
  let str1 = 'test';
  let str2 = 'Test_' + str1;
  console.log(str2);
 
 
- // #3
+ // 3. Write a JS program to combine and print your first, last name and age
 
  let firstName = 'Vasyl';
  let lastName = 'Barladyn'
@@ -36,27 +38,27 @@ stdin.addListener("data", (txt) => {
  + ' , my lastName is ' + lastName 
  + ' , I am ' + age + ' years old' );
 
- // #4
+ // 4. Write a JS program to check a given integer is bigger then 100
 
 let num3 = 999;
 
  console.log(num3 > 100);
 
- // #5
+ // 5. Write a JS program to find if the first number is larger from the two given positive integers
 
  let num4 = 9;
  let num5= 77;
 
  console.log(num4 > num5);
 
- // #6
+ // 6  Write a JS program to check two given numbers and return true if one of the number is 50 or if their sum is 50
 
  let num6 = 45;
  let num7 = 3;
 
  console.log((num6 === 50 || num6 === 50) || (num6 + num7 ===50));
  
- // #7 
+ // 7. Write a JS program check if a given positive number is a multiple of 3 or a multiple of 7
  
  let num8 =  21;
  if (num8 % 3 === 0 && num8 % 7 === 0){
