@@ -13,147 +13,82 @@ stdin.addListener("data", (txt) => {
     }   
   });*/
 
+// HomeWork 3
 
+ // 1. Write a JavaScript function to get the last element of an array
 
- //  HomeWork 2
+ let arr = ['qq', '44', '11', 'ee'];
 
- // 1. Write a JavaScript function to check if given string includes given symbol.
+ function getLastElementOfArray (arr){
+    console.log(`Останній елемент масиву ${arr} є ${arr[arr.length-1]}`);
+    return arr[arr.length-1];
+ }  
 
- let str3 = 'sadaskl;hahdoahohklnmm,.n';
- let symbol = 'a';
+ getLastElementOfArray(arr);
 
- function checkSymbolInString (str, symbol){
-     if (str.indexOf(symbol) > -1){
-         console.log(` У стрічці '${str}' зустрічається символ '${symbol}'`);
-         return true;
-     }else{
-        console.log(` У стрічці '${str}' зустрічається символ '${symbol}'`);
-        return false;
-     }
+ // 2. Write a simple JavaScript program to join all elements of the following array into a string
+ 
+ let arr1 = ['qq', '44', '11', 'ee'];
+ let str = arr1.join(" ");
 
- }
+ console.log(`convert array '${arr1}' to string wit separatorh " "   '${str}'`);
 
- checkSymbolInString(str3, symbol);
+ /* 3. There are two arrays with individual values, write a JavaScript program
+to compute the sum of each individual index value from the given arrays
+and save them to third array */
 
- // 2. Write a JavaScript function to check whether a string is blank or not.
+let arr2 = ['qq', '44', '11', 'ee'];
+let arr3 = [1,2,3];
+res = [];
 
-let str4 = '1 1';
-
-function checkIfStringIsBlank(str){
-    if (str.length > 1){
-        console.log(` У стрічці ' ${str}'  більше  одного символа`);
-        return true;
-    }else{
-       console.log(` Стрічка  '${str}'  пуста `);
-       return false;
-    }
-}
-
-checkIfStringIsBlank(str4);
-
-// 3.  Write a JavaScript function to convert a string in abbreviated form. console.log(abbrev (“Nazar Babii")) – should be “N.B.”
-
-let str5 = 'Nazar Babii';
-
-function convertStringToAbbrev(str){
-    let res = '';
-
-    arr = str.split(' ');   
-
-    arr.forEach((el) => {
+function addArrays(arr1, arr2){
+    if (arr1.length > arr2.length){
+        for (i = 0; i < arr1.length; i++){
+            if (arr2[i] == undefined){
+                res[i] = arr1[i];
+            }else{
+             res[i] = arr1[i] + arr2[i];
+            }
+        }
+        console.log(` Array [ ${arr1} ] + array [ ${arr2} ] = array [ ${res} ]`);
+        return res;
         
-        res = res.concat(`${el.charAt(0)}.`);
-    })  
-         console.log(`Convert from "${str}" to ${res}`);
-         return res;
-}
-
-convertStringToAbbrev(str5);
-
-// 4. Write a JavaScript function that accept two integers and display the larger
-
-let num9 = 12;
-let num10 = 13;
-
-function returnLargerInteger(num1, num2){
-    if (num1 > num2){
-        console.log(num1);
-        return num1;
-    }else if (num1 === num2){
-        console.log('Числа однакові');
-        return; 
-    }else {
-        console.log(num2);
-        return num2;
-    }
-}
-
-returnLargerInteger(num9, num10);
-
-// 5. Write a JavaScript function with conditional statement to sort three numbers.
-
-let num11 = 2;
-let num12 = 1;
-let num13 = 3
-let arrr =  [];
-
-function sortThreeNumber (num1, num2,num3){
-
-    if (num1 > num2 && num1 > num3){
-
-        arrr[0] = num1;
-
-        if (num2 > num3 ){
-
-            arrr[1] = num2;
-            arrr[2] = num3;
-
-            console.log(arrr);
-            return arrr;
-        }else {
-            arrr[1] = num3;
-            arrr[2] = num2;
-
-            console.log(arrr);
-            return arrr;
-        }
-    }else if(num2 > num1 && num2 > num3){
-        arrr[0] = num2;
-
-        if (num1 > num3){
-
-            arrr[1] = num1;
-            arrr[2] = num3;
-
-            console.log(arrr);
-            return arrr;
-
-        }else {
-            arrr[1] = num3;
-            arrr[2] = num1;
-
-            console.log(arrr);
-            return arrr;
-        }
     }else{
-        arrr[0] = num3;
-
-        if (num1 > num2){
-
-            arrr[1] = num1;
-            arrr[2] = num2;
-
-            console.log(arrr);
-            return arrr;
-            
-        }else {
-            arrr[1] = num2;
-            arrr[2] = num1;
-
-            console.log(arrr)
-            return arrr;
+        for (i = 0; i < arr2.length; i++){
+            if (arr1[i] == undefined){
+                res[i] = arr2[i];
+            }else{
+             res[i] = arr2[i] + arr1[i];
+            }
         }
+        console.log(` Array [ ${arr1} ] + array [ ${arr2} ] = array [ ${res} ]`);
+        return res;
     }
+   
 }
 
-sortThreeNumber(num11, num12, num13);
+addArrays(arr2, arr3);
+
+/* 4. Write a JavaScript program to calculate the area and perimeter of a
+rectangle. Rectangle should be an object with properties width and
+height and methods getArea() and getPerimeter();*/
+
+let rectangle = {width : 3, height : 2};
+let area;
+let perimeter;
+
+function getArea(obj){  
+    area = obj.width*obj.height;
+
+    console.log(`Area rectangle with width  ${obj.width} and height ${obj.height}   = ${area}`);
+    return area;
+}
+
+function getPerimeter(obj){ 
+    perimetr = 2 * (obj.width + obj.height);
+    console.log(`Perimetr rectangle with width  ${obj.width} and height ${obj.height}   = ${perimetr}`);
+    return perimetr;
+}
+
+getArea(rectangle);
+getPerimeter(rectangle);
