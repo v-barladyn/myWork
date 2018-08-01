@@ -1,216 +1,119 @@
-console.log("\nNice work! Your first application have been launched.");
-console.log("Now, I need to know your name, type it below: ");
 
-let stdin = process.openStdin();
+// HomeWork 4
 
-stdin.addListener("data", (txt) => {
-    if(txt.toString().trim() === "quit") {
-        console.log("\nHave a nice JS trip! Bye-bye");
-        stdin.end();
-    } else {
-        console.log(`\nHi ${txt.toString().trim()}, nice to meet you at Eleks QA Academy 2018. I am sure you'll become great in your job.`);
-        console.log(`${txt.toString().trim()}, to quit this application you can use 'Ctrl + C' keys, or type 'quit' and hit 'Enter'`); 
-    }   
-  });
+/* 1.Write a JavaScript program to break an address of an url and put it's part into an array.
+URL structure : ://.org[/] and there may be no part in the address
+https://eleks.com/services/quality-assurance-and-testing-services/*/
 
-// HomeWork 1
+ let url = 'https://eleks.com/services/quality-assurance-and-testing-services/';
+ let arr = [];
+ let newArr = [];
 
- // Write a JS program to compute and print the sum of the two given integers
+ function splitSptringToArray (url){
+     
+    arr = url.split('/');
 
- let num1 = 5;
- let num2 = 7;
- console.log(num1 + num2);
-
- // 2. Write a JS program to create a new string adding “Test_" in front of a given string
-
- let str1 = 'test';
- let str2 = 'Test_' + str1;
- console.log(str2);
-
-
- // 3. Write a JS program to combine and print your first, last name and age
-
- let firstName = 'Vasyl';
- let lastName = 'Barladyn'
- let age = 25;
-
- console.log('My firstNmae is ' + firstName 
- + ' , my lastName is ' + lastName 
- + ' , I am ' + age + ' years old' );
-
- // 4. Write a JS program to check a given integer is bigger then 100
-
-let num3 = 999;
-
- console.log(num3 > 100);
-
- // 5. Write a JS program to find if the first number is larger from the two given positive integers
-
- let num4 = 9;
- let num5= 77;
-
- console.log(num4 > num5);
-
- // 6  Write a JS program to check two given numbers and return true if one of the number is 50 or if their sum is 50
-
- let num6 = 45;
- let num7 = 3;
-
- console.log((num6 === 50 || num6 === 50) || (num6 + num7 ===50));
- 
- // 7. Write a JS program check if a given positive number is a multiple of 3 or a multiple of 7
- 
- let num8 =  21;
- if (num8 % 3 === 0 && num8 % 7 === 0){
-     console.log(` Число ${num8} кратне 3 і 7`)
- }else if (num8 % 3 === 0){
-    console.log(` Число ${num8} кратне 3`)
- }else if (num8 % 7 === 0){
-    console.log(` Число ${num8} кратне 7`)
- }else {
-     console.log(` Число ${num8} не кратне ні 7, ні 4`);
-
+    arr.forEach(el => {
+        if (el){
+            newArr.push(el);
+        }
+    });    
+    
+     console.log(newArr);
+     return newArr;
  }
 
- //  HomeWork 2
+splitSptringToArray (url);
 
- // 1. Write a JavaScript function to check if given string includes given symbol.
 
- let str3 = 'sadaskl;hahdoahohklnmm,.n';
- let symbol = 'a';
 
- function checkSymbolInString (str, symbol){
-     if (str.indexOf(symbol) > -1){
-         console.log(` У стрічці '${str}' зустрічається символ '${symbol}'`);
-         return true;
-     }else{
-        console.log(` У стрічці '${str}' зустрічається символ '${symbol}'`);
-        return false;
-     }
+/* 2. Write few figures' objects (circle, triangle, square). Create function to calculate area of
+each figure (one function should handle all objects). Sort objects by area*/
 
- }
+let obj1 = {
+    type : 'circle',
+    r : 5
+};
 
- checkSymbolInString(str3, symbol);
+let obj2 = {
+    type : 'triangle',
+     k1: 3,
+     k2: 4
+};
 
- // 2. Write a JavaScript function to check whether a string is blank or not.
+let obj3 = {
+    type : 'square',
+     h:7
+    }
 
-let str4 = '1 1';
+function getArea (obj){
+    switch(obj.type){
+    case 'circle':
+    console.log(`circle  area = ${Math.PI*obj.r*obj.r}`);
+    return Math.PI*obj.r^2;
 
-function checkIfStringIsBlank(str){
-    if (str.length > 1){
-        console.log(` У стрічці ' ${str}'  більше  одного символа`);
-        return true;
+    case 'triangle':
+    console.log(`triangle area =  ${obj.k1*obj.k2/2}`);
+    return obj.k1*obj.k2/2;
+
+    case 'square':
+    console.log(`square area =  ${obj.h*obj.h}`);
+    return obj.h*obj.h;
+
+    default:
+    console.log('Введено некоректний обєкт');
+   
+    }    
+}
+
+getArea(obj1);
+
+/* 3.Write a calculator function with three parameters , two arguments and math action to do
+with them. Handle some of general math rules.*/
+
+let par1 = 5;
+let par2 = 6;
+let par3 = '/';
+
+function division (parametr1, parametr2){
+    if(parametr2 != 0){
+        return parametr1 / parametr2;
+
     }else{
-       console.log(` Стрічка  '${str}'  пуста `);
-       return false;
+        console.log('Ділення на ноль');
     }
 }
 
-checkIfStringIsBlank(str4);
-
-// 3.  Write a JavaScript function to convert a string in abbreviated form. console.log(abbrev (“Nazar Babii")) – should be “N.B.”
-
-let str5 = 'Nazar Babii';
-
-function convertStringToAbbrev(str){
-    let res = '';
-
-    arr = str.split(' ');   
-
-    arr.forEach((el) => {
-        
-        res = res.concat(`${el.charAt(0)}.`);
-    })  
-         console.log(`Convert from "${str}" to ${res}`);
-         return res;
+function add (parametr1, parametr2){
+    return parametr1 + parametr2;
 }
 
-convertStringToAbbrev(str5);
+function multiplication (parametr1, parametr2){
+    return parametr1 * parametr2;
+}
 
-// 4. Write a JavaScript function that accept two integers and display the larger
+function subtraction (parametr1, parametr2){
+    return parametr1 - parametr2;
+}
 
-let num9 = 12;
-let num10 = 13;
 
-function returnLargerInteger(num1, num2){
-    if (num1 > num2){
-        console.log(num1);
-        return num1;
-    }else if (num1 === num2){
-        console.log('Числа однакові');
-        return; 
-    }else {
-        console.log(num2);
-        return num2;
+function calculator (parametr1, parametr2, parametr3){
+    switch(parametr3){
+        case '/':
+        return division(parametr1, parametr2);
+
+        case '+':
+        return add(parametr1, parametr2);
+
+        case '-':
+        return subtraction(parametr1, parametr2);
+
+        case '*':
+        return multiplication(parametr1, parametr2);
+
+        default:
+        console.log('Wrong date are entered');
     }
 }
 
-returnLargerInteger(num9, num10);
-
-// 5. Write a JavaScript function with conditional statement to sort three numbers.
-
-let num11 = 2;
-let num12 = 1;
-let num13 = 3
-let arrr =  [];
-
-function sortThreeNumber (num1, num2,num3){
-
-    if (num1 > num2 && num1 > num3){
-
-        arrr[0] = num1;
-
-        if (num2 > num3 ){
-
-            arrr[1] = num2;
-            arrr[2] = num3;
-
-            console.log(arrr);
-            return arrr;
-        }else {
-            arrr[1] = num3;
-            arrr[2] = num2;
-
-            console.log(arrr);
-            return arrr;
-        }
-    }else if(num2 > num1 && num2 > num3){
-        arrr[0] = num2;
-
-        if (num1 > num3){
-
-            arrr[1] = num1;
-            arrr[2] = num3;
-
-            console.log(arrr);
-            return arrr;
-
-        }else {
-            arrr[1] = num3;
-            arrr[2] = num1;
-
-            console.log(arrr);
-            return arrr;
-        }
-    }else{
-        arrr[0] = num3;
-
-        if (num1 > num2){
-
-            arrr[1] = num1;
-            arrr[2] = num2;
-
-            console.log(arrr);
-            return arrr;
-            
-        }else {
-            arrr[1] = num2;
-            arrr[2] = num1;
-
-            console.log(arrr)
-            return arrr;
-        }
-    }
-}
-
-sortThreeNumber(num11, num12, num13);
+calculator(par1, 0, par3);
