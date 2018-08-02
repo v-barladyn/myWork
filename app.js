@@ -54,16 +54,16 @@ let obj3 = {
 function getArea (obj){
     switch(obj.type){
     case 'circle':
-    console.log(`circle  area = ${Math.PI*obj.r*obj.r}`);
-    return Math.PI*obj.r^2;
+    console.log(`circle  area = ${Math.round(Math.PI*obj.r*obj.r)}`);
+    return Math.round(Math.PI*obj.r^2);
 
     case 'triangle':
-    console.log(`triangle area =  ${obj.k1*obj.k2/2}`);
-    return obj.k1*obj.k2/2;
+    console.log(`triangle area =  ${Math.round(obj.k1*obj.k2/2)}`);
+    return Math.round(obj.k1*obj.k2/2);
 
     case 'square':
-    console.log(`square area =  ${obj.h*obj.h}`);
-    return obj.h*obj.h;
+    console.log(`square area =  ${Math.round(obj.h*obj.h)}`);
+    return Math.round(obj.h*obj.h);
 
     default:
     console.log('Введено некоректний обєкт');
