@@ -8,21 +8,30 @@ https://eleks.com/services/quality-assurance-and-testing-services/*/
  let url = 'https://eleks.com/services/quality-assurance-and-testing-services/';
  let arr = [];
  let newArr = [];
- let newEl;
+ let helpArr = []
 
  function splitSptringToArray (url){
      
     arr = url.split('/');
 
     arr.forEach(el => {
+        
+            if (el){
+               
+                if (el.charAt(el.length-1) == ':'){
+                    el = el.slice(0, el.length-1);                    
+                    newArr.push(el);      
 
-        if (el){
-            if (el.charAt(el.length-1) == ':'){
-                el = el.slice(0, el.length-1);                
+                } else if (el.indexOf('.') > -1){
+                    helpArr = el.split(".")
+                    helpArr.forEach(el => {                        
+                    newArr.push(el);})
+                }else{                    
+                newArr.push(el); 
+                }
+            
             }
-            newArr.push(el);
-        }
-    });    
+    });     
     
      console.log(newArr);
      return newArr;
