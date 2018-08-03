@@ -71,7 +71,10 @@ function getArea (obj){
     }    
 }
 
-getArea(obj1);
+
+sortThreeNumber(getArea(obj1), getArea(obj2), getArea(obj3));
+
+
 
 /* 3.Write a calculator function with three parameters , two arguments and math action to do
 with them. Handle some of general math rules.*/
@@ -122,3 +125,65 @@ function calculator (parametr1, parametr2, parametr3){
 }
 
 calculator(par1, 0, par3);
+
+
+// function for sourting
+
+function sortThreeNumber (num1, num2,num3){
+        arrr = [];
+    if (num1 > num2 && num1 > num3){
+
+        arrr[0] = num1;
+
+        if (num2 > num3 ){
+
+            arrr[1] = num2;
+            arrr[2] = num3;
+
+            console.log(arrr);
+            return arrr;
+        }else {
+            arrr[1] = num3;
+            arrr[2] = num2;
+
+            console.log(arrr);
+            return arrr;
+        }
+    }else if(num2 > num1 && num2 > num3){
+        arrr[0] = num2;
+
+        if (num1 > num3){
+
+            arrr[1] = num1;
+            arrr[2] = num3;
+
+            console.log(arrr);
+            return arrr;
+
+        }else {
+            arrr[1] = num3;
+            arrr[2] = num1;
+
+            console.log(arrr);
+            return arrr;
+        }
+    }else{
+        arrr[0] = num3;
+
+        if (num1 > num2){
+
+            arrr[1] = num1;
+            arrr[2] = num2;
+
+            console.log(arrr);
+            return arrr;
+            
+        }else {
+            arrr[1] = num2;
+            arrr[2] = num1;
+
+            console.log(arrr)
+            return arrr;
+        }
+    }
+}
