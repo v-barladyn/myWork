@@ -47,12 +47,20 @@ async function test (param){
     console.log('test function');
     console.log(s1);
 
-    return `I am function test1`;
+    return `I am function test`;
 }
 async function test1(){
     let tt = await test(pr);
+    console.log('I am function test1');
     console.log(tt);
+    console.log('I am function test11');
 }
 
+function testThen (param){
+     param.then((el) => {console.log('Test  then function ' + el);}); 
+     console.log('I am function test Then');
+} 
+
+testThen(pr);
 test1();
 
