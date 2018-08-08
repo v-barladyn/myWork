@@ -25,6 +25,7 @@ class Car extends Vehicle {
     }
 
     displayInfo(){
+       console.log('Its a car class');
        return super.displayInfo();
     }
 
@@ -40,6 +41,14 @@ class Track extends Vehicle {
         this.type = "track";
     }
 
+    displayInfo(){
+        console.log(` this is track class
+        Name: ${this.model};
+        Year: ${this.year};
+        Max Speed: ${this.maxSpeed};
+        Type: ${this.type};`);
+    }  
+
     transportPeple(){
         console.log(`I am starting transporting heavy container`);
     }
@@ -47,9 +56,17 @@ class Track extends Vehicle {
    
 }
 
-let volvo = new Car('243', 2002, 210);
-//console.log(volvo);
-//volvo.displayInfo();
-volvo.transportPeple();
+
+// Call staticMethod from Vehicle class  
 Vehicle.staticMethod();
-//volvo.staticMethod();
+
+// Create obj car and call displayInfo method
+let volvo = new Car('Volvo', 2002, 210);
+volvo.displayInfo(); // Overriding and call method from parent clas
+
+
+// Create obj car and call  methods
+let track = new Track('Man', 2011, 99);
+track.displayInfo(); //Overriding parent method
+track.transportPeple();
+

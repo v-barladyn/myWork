@@ -1,3 +1,5 @@
+const Vehicle = require('./Vehicle');
+
 class Car extends Vehicle {
     constructor(carModel,carYear,maxSpeed){
         super(carModel,carYear,maxSpeed);
@@ -5,12 +7,13 @@ class Car extends Vehicle {
     }
 
     displayInfo(){
-       return super.displayInfo();
-    }
+        console.log('Its a car class');
+        return super.displayInfo();
+    }  
 
     transportPeple(){
         console.log(`I am starting transporting people`);
     }
 }
 
-export default Animal;
+module.exports = Car;
