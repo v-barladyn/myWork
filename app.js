@@ -18,8 +18,7 @@ console.log(student.rate); //Change ‘rate’ value and output it
 
 // 2. Random 
 //Create js program which will provide you a string with a defined length
-let randomstring = require("randomstring");
- 
+let randomstring = require("randomstring"); 
 
 let randStr = randomstring.generate({
     length : 5//,
@@ -32,3 +31,36 @@ console.log(randStr);
 
 let int = Math.floor(Math.random() * 100)
 console.log(int);
+
+// 3. File System Module 
+let fs =require('fs');
+
+// Create a file using open()
+
+fs.open('open.txt', 'w', (err, file) => {
+    if(err) throw err;
+    console.log('Saccess!!!!!!');
+})
+
+// Update created file using appendFile
+let content = 'some text';
+fs.appendFile('open.txt', content, (err) => {
+    if(err) throw err;
+    console.log('Updated!!!!!!');
+})
+
+// Update created file using writeFile()
+
+let cont = 'some another text'; 
+
+fs.writeFile('open.txt', cont, (err) => {
+    if(err) throw err;
+    console.log('Updated(write)!!!!!!');
+})
+
+// ReadFile() and output its value
+
+fs.readFile('open.txt', 'utf8', (err, contents) => {
+    if(err) throw err;
+    console.log(contents);
+});
