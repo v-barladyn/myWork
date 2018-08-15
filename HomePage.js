@@ -9,5 +9,5 @@ class HomePage {
     }      
 }
 
-//module.exports = HomePage;
-export default HomePage;
+module.exports = HomePage;
+

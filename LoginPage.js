@@ -1,5 +1,5 @@
-//const HomePage = require('./HomePage');
-import HomePage from './HomePage.js';
+const HomePage = require('./HomePage');
+
 class LoginPage extends HomePage {
     constructor(type){
         super(type);
@@ -16,8 +16,7 @@ class LoginPage extends HomePage {
    
 }
 
-//module.exports = LoginPage;
-export default LoginPage;
+module.exports = LoginPage;
 
  let y = new LoginPage('login');
  console.log(y);
