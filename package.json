@@ -3,6 +3,8 @@
     "version": "1.0.0",
     "description": "",
     "author": "",
-    "license": "ISC",    
-    "dependencies": {}
-  }
+    "license": "ISC",
+    "dependencies": {
+        "webdriver-manager": "^12.1.0"
+    }
+}
