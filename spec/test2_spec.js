@@ -1,7 +1,7 @@
 // 2. Create a suite to verify if JS program (calculator) works correctly
 
 const Calc = require('./Calc');
-const calc = new Calc();console.log(calc.add(1,2));
+const calc = new Calc();
 
 describe('Caculator',() => {
     let number1 = '';
