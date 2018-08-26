@@ -2,8 +2,18 @@
     "name": "MyFirstApp",
     "version": "1.0.0",
     "description": "",
-    "author": "",
+     "main": "./configs/conf.js"
+    "author": "Vasyl Barladyn",
     "license": "ISC",
+    "directories": {
+    "test": "specs"
+  },
+   "scripts": {
+    "test:ui": "./node_modules/.bin/protractor ./configs/conf.js --disableChecks",
+    "test:driver-manager:update": "./node_modules/.bin/webdriver-manager update --versions.standalone=3.14.0 --versions.chrome=2.41.0",
+    "test:driver-manager:start": "./node_modules/.bin/webdriver-manager start  --versions.standalone=3.14.0 --versions.chrome=2.41.0"
+
+  },
     "dependencies": {
         "webdriver-manager": "^12.1.0"
     }
