@@ -9,6 +9,8 @@ xdescribe('Login Functionality', () => {
     let inputEmail = new WebTextInput(element(by.id('email')), "Input Email");
     let inputPassword = new WebTextInput(element(by.id('userPassword')), "Input Password");
     let checkName = new WebTextView(element(by.css(".user-name")), "checkName Label");
+    let logoutDrop = new WebButton(element(by.css('span.caret')), 'Logout Dropdown');
+    let logoutButton = new WebButton(element(by.css('a.dropdown-item>strong')),"Logout Button");
 
     it('User should be able to login into eds_university.eleks.com', async () => {
         await browser.get('http://eds_university.eleks.com/login');
@@ -25,6 +27,9 @@ xdescribe('Login Functionality', () => {
 
         expect(name).toEqual('Vasyl Barladyn');
         console.log("User Name - " + name );
+
+        //await logoutDrop.click();
+        //await logoutButton.click();
         
     });       
 });

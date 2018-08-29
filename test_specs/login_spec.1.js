@@ -8,7 +8,8 @@ describe('Login Functionality', () => {
     let signInButton = new WebButton(element(by.css('.iframe-wrap .login-button')), "Sign In Button"); 
     let inputEmail = new WebTextInput(element(by.id('email')), "Input Email");
     let inputPassword = new WebTextInput(element(by.id('userPassword')), "Input Password");
-    let checkName = new WebTextView(element(by.css(".user-name")), "checkName Label");
+    let checkName = new WebTextView(element(by.css(".user-name")), "checkName Label");   
+
     let url = 'http://eds_university.eleks.com/login';
     let email = "Vasiliy.barladyn+scorer@gmail.com";
     let wrongEmail = "rrrr@mail.com";
@@ -46,12 +47,12 @@ describe('Login Functionality', () => {
         await signInButton.click();
         let name = await checkName.getLabel();
         expect(name).toEqual(pageLabel);
-        console.log("User Name - " + name );
+        console.log("User Name - " + name );        
         
     });
 
-    afterAll(() => {
-        console.log('Al login tests succesfully finished');  
+    afterAll( () => {
+        console.log('Al login tests succesfully finished');        
     });
 
 });
