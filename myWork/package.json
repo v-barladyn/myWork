@@ -1,0 +1,23 @@
+{
+  "name": "myfirstapp",
+  "version": "1.0.0",
+  "main": "./configs/conf.js",
+  "author": "Vasyl Barladyn",
+  "license": "ISC",
+  "directories": {
+    "test": "specs"
+  },
+  "scripts": {
+    "test:ui": "protractor ./configs/conf.js --disableChecks",
+    "test:driver-manager:update": "webdriver-manager update --versions.standalone=3.14.0 --versions.chrome=2.41.0",
+    "test:driver-manager:start": "webdriver-manager start  --versions.standalone=3.14.0 --versions.chrome=2.41.0"
+  },
+  "dependencies": {
+    "webdriver-manager": "^12.1.0"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.24.1",
+    "babel-register": "^6.26.0"
+  },
+  "description": ""
+}

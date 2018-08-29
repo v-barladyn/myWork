@@ -1,9 +1,7 @@
-let WebControl = require("../base/web.control");
+import WebControl from  "../base/web.control";
 
-class WebButton extends WebControl {
+export default class WebButton extends WebControl {
     constructor(webElement, title) {
         super(webElement, title);
     }
 }
-
-module.exports = WebButton;
