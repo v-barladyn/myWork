@@ -10,8 +10,8 @@ class LoginPage {
         this.inputEmail = new WebTextInput(element(by.id('email')), "Input Email");
         this.inputPassword = new WebTextInput(element(by.id('userPassword')), "Input Password");
         this.checkName = new WebTextView(element(by.css(".user-name")), "checkName Label");
-        let logoutDrop = new WebButton(element(by.css('span.caret')), 'Logout Dropdown');
-        let logoutButton = new WebButton(element(by.css('a.dropdown-item>strong')),"Logout Button");
+        this.logoutDrop = new WebButton(element(by.css('span.caret')), 'Logout Dropdown');
+        this.logoutButton = new WebButton(element(by.css('a.dropdown-item>strong')),"Logout Button");
 
 
         this.pageLabel = 'Vasyl Barladyn';
