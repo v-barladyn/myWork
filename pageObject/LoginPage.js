@@ -10,6 +10,10 @@ class LoginPage {
         this.inputEmail = new WebTextInput(element(by.id('email')), "Input Email");
         this.inputPassword = new WebTextInput(element(by.id('userPassword')), "Input Password");
         this.checkName = new WebTextView(element(by.css(".user-name")), "checkName Label");
+        let logoutDrop = new WebButton(element(by.css('span.caret')), 'Logout Dropdown');
+        let logoutButton = new WebButton(element(by.css('a.dropdown-item>strong')),"Logout Button");
+
+
         this.pageLabel = 'Vasyl Barladyn';
         this.url = 'http://eds_university.eleks.com/login';
         this.email = "Vasiliy.barladyn@gmail.com";
@@ -24,7 +28,12 @@ class LoginPage {
         await this.signInButton.click();
         let name = await this.checkName.getLabel();
         expect(name).toEqual(this.pageLabel);  
-    }   
+    }
+    
+    async logOut(){
+         await logoutDrop.click();
+         await logoutButton.click();
+    }
 }
 
 module.exports = LoginPage;
