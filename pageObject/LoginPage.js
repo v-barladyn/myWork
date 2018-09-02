@@ -4,31 +4,61 @@ import WebTextView from "../controls/web.label";
 
 
 class LoginPage {
-    constructor(){
-
-        this.loginButton = new WebButton(element(by.css('.login-button')), "Login Button");
-        this.signInButton = new WebButton(element(by.css('.iframe-wrap .login-button')), "Sign In Button"); 
-        this.inputEmail = new WebTextInput(element(by.id('email')), "Input Email");
-        this.inputPassword = new WebTextInput(element(by.id('userPassword')), "Input Password");
-        this.checkName = new WebTextView(element(by.css(".user-name")), "checkName Label");
-        this.logOutButton = new WebTextView(element(by.xpath("//ul/li/a[@id='single-button']")), 'Logout Dropdown');
-        this.signOut = new WebTextView(element(by.xpath("//a[@class='dropdown-item']/strong")),"Logout Button");
-
-        this.pageLabel = 'Vasyl Barladyn';
-        this.url = 'http://eds_university.eleks.com/login';
-        this.email = "Vasiliy.barladyn@gmail.com";
-        this.password = "qz7#(Jv_";
+    constructor(){ 
     }
 
-    async logIn(){
+    get loginButton(){
+        return new WebButton(element(by.css('.login-button')), "Login Button");
+    }
 
+    get signInButton(){
+        return new WebButton(element(by.css('.iframe-wrap .login-button')), "Sign In Button"); 
+    }
+
+    get inputEmail(){
+        return new WebTextInput(element(by.id('email')), "Input Email");        
+    }
+
+    get inputPassword(){
+        return new WebTextInput(element(by.id('userPassword')), "Input Password");
+    }
+
+    get checkNameAfterLogIn(){
+        return new WebTextView(element(by.css(".user-name")), "checkNameAfterLogIn Label");
+    }
+
+    get logOutButton(){
+        return new WebTextView(element(by.xpath("//ul/li/a[@id='single-button']")), 'Logout Button');
+    }
+
+    get signOut(){
+        return new WebTextView(element(by.xpath("//a[@class='dropdown-item']/strong")),"SignOut Button");
+    }  
+
+    get pageLabel(){
+        return 'Vasyl Barladyn';
+    }
+    
+    get url(){
+        return 'http://eds_university.eleks.com/login';
+    }
+
+    get email(){
+        return "Vasiliy.barladyn@gmail.com";
+    }
+
+    get password(){
+        return 'qz7#(Jv_';
+    }
+
+
+    async logIn(){
         await browser.get(this.url);
         await this.loginButton.click();        
         await this.inputEmail.sendKeys(this.email);
         await this.inputPassword.sendKeys(this.password);
         await this.signInButton.click();
-        let name = await this.checkName.getLabel();
-        expect(name).toEqual(this.pageLabel);  
+        expect(await this.checkNameAfterLogIn.getLabel()).toEqual(this.pageLabel);  
     }
     
     async logOut(){        
