@@ -12,7 +12,7 @@ class HeaderPage {
     }
 
     get productTab(){
-        return new WebTextView(element(by.xpath("//a[contains(text(),'PRODUCTS')]")), "Product Tab");
+        return new WebTextView(element(by.xpath("//div[@id='navbar']/ul/li/a[contains(text(),'PRODUCTS')]")), "Product Tab");
     }
 
     get tabLabel(){
@@ -21,13 +21,10 @@ class HeaderPage {
     
 
     async switchToAdminTab(){  
-
         await this.adminTab.click();       
         expect(await this.productTab.getLabel()).toEqual(this.tabLabel);        
-        
     }   
-
-    
+  
 
 }
 
