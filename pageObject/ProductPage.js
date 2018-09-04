@@ -9,11 +9,11 @@ class ProductPage {
     }
 
     get noticeSuccessfullyCreated(){
-        return element(by.xpath("//div/span[contains(text(),'" + this.productName + "')]"));
+        return element(by.xpath("//div/span[contains(text(),'Product " + this.productName + " successfully created')]"));
     }
 
     get noticeSuccessfullyDeleted(){
-        return element(by.xpath("//div/span[contains(text(),'" + this.productName + "')]"));
+        return element(by.xpath("//div/span[contains(text(),'Product " + this.productName + " successfully deleted')]"));
     }
 
     get addNewProd(){
@@ -73,7 +73,7 @@ class ProductPage {
         await this.searchProducFamily.sendKeys(this.familyName);
         await this.setProductFamily.click();
         await this.savePruductButton.click();        
-        await browser.wait(protractor.ExpectedConditions.presenceOf(this.noticeSuccessfullyCreated), 5000, 'Element taking too long to appear in the DOM');
+        await browser.wait(protractor.ExpectedConditions.presenceOf(this.noticeSuccessfullyCreated), 5000, ' Notice Successfully Created Element taking too long to appear in the DOM');
     }    
 
     async searchForProduct(){
@@ -84,10 +84,9 @@ class ProductPage {
     async deleteProduct(){
         await this.productSearchresult.click();
         await this.deleteProductButton.click();
-        await browser.wait(protractor.ExpectedConditions.presenceOf(this.this.confirmationOfDeliting), 5000, 'Element taking too long to appear in the DOM');
+        await browser.wait(protractor.ExpectedConditions.presenceOf(this.confirmationOfDeliting), 5000, ' Confirmation Of Deliting Element taking too long to appear in the DOM');
         await this.confirmationOfDeliting.click();
-        await browser.wait(protractor.ExpectedConditions.presenceOf(this.noticeSuccessfullyDeleted), 5000, 'Element taking too long to appear in the DOM');
-        await browser.sleep(3000);
+        await browser.wait(protractor.ExpectedConditions.presenceOf(this.noticeSuccessfullyDeleted), 5000, 'Notice Successfully Deleted Element taking too long to appear in the DOM');       
     }
 
    

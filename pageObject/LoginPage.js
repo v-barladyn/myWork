@@ -51,9 +51,18 @@ class LoginPage {
         return 'qz7#(Jv_';
     }
 
+    get checkCurrentUrl(){
+        return 'http://eds_university.eleks.com/login';
+    }
+    
+
+    async opensSite(){
+        await browser.get(this.url);
+        expect(await browser.getCurrentUrl()).toEqual(this.checkCurrentUrl);
+    }
 
     async logIn(){
-        await browser.get(this.url);
+        await this.opensSite();
         await this.loginButton.click();        
         await this.inputEmail.sendKeys(this.email);
         await this.inputPassword.sendKeys(this.password);

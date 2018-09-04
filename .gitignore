@@ -3,3 +3,5 @@
 # Dependency directory
 package-lock.json
 node_modules
+allure-report
+allure-results

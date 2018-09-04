@@ -7,9 +7,13 @@
     "babel-register": "^6.26.0",
     "webdriver-manager": "^12.1.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "allure-commandline": "^2.7.0",
+    "jasmine-allure-reporter": "^1.0.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "posttest" : "allure generate allure-results --clean -o allure-report"
   },
   "repository": {
     "type": "git",

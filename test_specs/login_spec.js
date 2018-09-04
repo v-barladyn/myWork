@@ -9,7 +9,7 @@ describe('Login Functionality', () => {
        await LoginPage.logIn();
        await HeaderPage.switchToAdminTab();
        await ProductPage.addNewProduct();
-       await ProductPage.searchForProduct();
+       await ProductPage.searchForProduct();      
        await LoginPage.logOut();
        
     });    

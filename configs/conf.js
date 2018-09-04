@@ -8,6 +8,13 @@ exports.config = {
         defaultTimeoutInterval: 60000
     },
 
+    onPrepare: function() {
+        let AllureReporter = require('jasmine-allure-reporter');
+        jasmine.getEnv().addReporter(new AllureReporter({
+          resultsDir: 'allure-results'
+        }));
+      },
+
     SELENIUM_PROMISE_MANAGER: 0,
     directConnect: false,
     framework: "jasmine2",
