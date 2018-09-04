@@ -5,13 +5,10 @@ import HeaderPage from "../../../pageObject/HeaderPage"
 describe('Product creation', () => {
 
     it('Product creation', async () => {
-
-       await LoginPage.logIn();
-       await HeaderPage.switchToAdminTab();
-       await ProductPage.addNewProduct();
-       await ProductPage.searchForProduct();      
-       await LoginPage.logOut();
-       
-    });    
-    
+        await LoginPage.logIn();
+        await HeaderPage.switchToAdminTab();
+        await ProductPage.addNewProduct();        
+        await ProductPage.searchForProduct();
+        await LoginPage.logOut();      
+    });        
 });

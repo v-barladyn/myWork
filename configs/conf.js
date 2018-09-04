@@ -10,9 +10,15 @@ exports.config = {
 
     onPrepare: function() {
         let AllureReporter = require('jasmine-allure-reporter');
-        jasmine.getEnv().addReporter(new AllureReporter({
-          resultsDir: 'allure-results'
-        }));
+    jasmine.getEnv().addReporter(new AllureReporter());
+    jasmine.getEnv().afterEach(function(done){
+      browser.takeScreenshot().then(function (png) {
+        allure.createAttachment('Screenshot', function () {
+          return new Buffer(png, 'base64')
+        }, 'image/png')();
+        done();
+      })
+    });
       },
 
     SELENIUM_PROMISE_MANAGER: 0,
@@ -21,7 +27,7 @@ exports.config = {
     allScriptsTimeout: 60000,
     getPageTimeout: 60000,
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    suites :{ 
+    suites : { 
         authenticationNegative: ["../test_specs/authentication/negative/*.js"],
         authenticationPositive: ["../test_specs/authentication/positive/*.js"],
         createProduct: ["../test_specs/administration/product/*.js"]
