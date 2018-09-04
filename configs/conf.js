@@ -21,9 +21,12 @@ exports.config = {
     allScriptsTimeout: 60000,
     getPageTimeout: 60000,
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ["../test_specs/*.js"],
-
-
+    suites :{ 
+        authenticationNegative: ["../test_specs/authentication/negative/*.js"],
+        authenticationPositive: ["../test_specs/authentication/positive/*.js"],
+        createProduct: ["../test_specs/administration/product/*.js"]
+        
+    },
     capabilities: {
         browserName: "chrome"
     }

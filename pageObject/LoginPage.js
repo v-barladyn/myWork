@@ -1,6 +1,7 @@
 import WebButton from "../controls/web.button";
 import WebTextInput from "../controls/web.input";
 import WebTextView from "../controls/web.label";
+browser.ignoreSynchronization = true;
 
 
 class LoginPage {
@@ -50,9 +51,15 @@ class LoginPage {
     get password(){
         return 'qz7#(Jv_';
     }
-
+    get wrongPassword(){
+        return 'qz7#(Jv';
+    }
     get checkCurrentUrl(){
         return 'http://eds_university.eleks.com/login';
+    }
+
+    get errorLoginwithWrongCredentials(){
+        return element(by.xpath("//span[contains(text(),'Login or password is not correct')]"))
     }
     
 
@@ -73,6 +80,7 @@ class LoginPage {
     async logOut(){        
         await this.logOutButton.click();        
         await this.signOut.click();
+        await browser.sleep(2000);
     }
 }
 

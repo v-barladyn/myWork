@@ -86,7 +86,7 @@ class ProductPage {
         await this.deleteProductButton.click();
         await browser.wait(protractor.ExpectedConditions.presenceOf(this.confirmationOfDeliting), 5000, ' Confirmation Of Deliting Element taking too long to appear in the DOM');
         await this.confirmationOfDeliting.click();
-        await browser.wait(protractor.ExpectedConditions.presenceOf(this.noticeSuccessfullyDeleted), 5000, 'Notice Successfully Deleted Element taking too long to appear in the DOM');       
+        
     }
 
    
