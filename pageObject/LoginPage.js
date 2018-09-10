@@ -80,7 +80,9 @@ class LoginPage {
     async logOut(){        
         await this.logOutButton.click();        
         await this.signOut.click();
-        await browser.sleep(2000);
+        //await browser.sleep(2000);
+        await browser.wait(protractor.ExpectedConditions.presenceOf(this.loginButton), 5000, ' 1111111111111 Confirmation Of Deliting Element taking too long to appear in the DOM');
+
     }
 }
 
