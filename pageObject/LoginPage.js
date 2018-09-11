@@ -54,35 +54,51 @@ class LoginPage {
     get wrongPassword(){
         return 'qz7#(Jv';
     }
-    get checkCurrentUrl(){
-        return 'http://eds_university.eleks.com/login';
-    }
-
+   
     get errorLoginwithWrongCredentials(){
         return element(by.xpath("//span[contains(text(),'Login or password is not correct')]"))
+    }
+
+    get checkLogInButton(){
+       return  element(by.css('.login-button'));
     }
     
 
     async opensSite(){
-        await browser.get(this.url);
-        expect(await browser.getCurrentUrl()).toEqual(this.checkCurrentUrl);
+        await allure.createStep("Open site",  async () => {
+            await browser.get(this.url);
+            expect(await browser.getCurrentUrl()).toEqual(this.url);
+        })();
     }
 
     async logIn(){
         await this.opensSite();
-        await this.loginButton.click();        
-        await this.inputEmail.sendKeys(this.email);
-        await this.inputPassword.sendKeys(this.password);
-        await this.signInButton.click();
-        expect(await this.checkNameAfterLogIn.getLabel()).toEqual(this.pageLabel);  
+
+        await allure.createStep("Click log in button",   async () => {
+            await this.loginButton.click();
+        })();
+        
+        await allure.createStep("Input email end password",   async () => {        
+            await this.inputEmail.sendKeys(this.email);
+            await this.inputPassword.sendKeys(this.password);
+        })();
+
+        await allure.createStep("Click sign in button",   async () => {        
+            await this.signInButton.click();
+            expect(await this.checkNameAfterLogIn.getLabel()).toEqual(this.pageLabel); 
+        })();
+ 
     }
     
-    async logOut(){        
-        await this.logOutButton.click();        
-        await this.signOut.click();
-        //await browser.sleep(2000);
-        await browser.wait(protractor.ExpectedConditions.presenceOf(this.loginButton), 5000, ' 1111111111111 Confirmation Of Deliting Element taking too long to appear in the DOM');
+    async logOut(){
+        await allure.createStep("Click log out button",   async () => {        
+            await this.logOutButton.click();  
+        })();
 
+        await allure.createStep("Click sign out button",   async () => {     
+            await this.signOut.click();       
+            await browser.wait(protractor.ExpectedConditions.presenceOf(this.checkLogInButton), 5000, 'Wait for element login button');
+        })();
     }
 }
 

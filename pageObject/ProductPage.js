@@ -1,11 +1,13 @@
 import WebButton from "../controls/web.button";
 import WebTextInput from "../controls/web.input";
 import WebTextView from "../controls/web.label";
+
 browser.ignoreSynchronization = true;
 
 
-class ProductPage {
-    constructor(){                              
+class ProductPage  {
+    constructor(){
+      
     }
 
     get noticeSuccessfullyCreated(){
@@ -66,30 +68,36 @@ class ProductPage {
 
 
 
-    async addNewProduct(){                    
-        await this.addNewProd.click();
-        await this.inputProdactName.sendKeys(this.productName);
-        await this.productFamilyArea.click();       
-        await this.searchProducFamily.sendKeys(this.familyName);
-        await this.setProductFamily.click();
-        await this.savePruductButton.click();        
-        await browser.wait(protractor.ExpectedConditions.presenceOf(this.noticeSuccessfullyCreated), 5000, ' Notice Successfully Created Element taking too long to appear in the DOM');
+    async addNewProduct(){
+        await allure.createStep("Create new product",  async () => {                    
+            await this.addNewProd.click();
+            await this.inputProdactName.sendKeys(this.productName);
+            await this.productFamilyArea.click();       
+            await this.searchProducFamily.sendKeys(this.familyName);
+            await this.setProductFamily.click();
+            await this.savePruductButton.click();        
+            await browser.wait(protractor.ExpectedConditions.presenceOf(this.noticeSuccessfullyCreated), 5000, ' Notice Successfully Created Element taking too long to appear in the DOM');
+        })();
+    
     }    
 
     async searchForProduct(){
-        await this.productSerchfield.sendKeys(this.productName);
-        expect(await this.productSearchresult.getLabel()).toEqual(this.productName);         
+        await allure.createStep("Search for created product",  async () => {
+
+            await this.productSerchfield.sendKeys(this.productName);
+            expect(await this.productSearchresult.getLabel()).toEqual(this.productName);
+        })();         
     }
 
     async deleteProduct(){
-        await this.productSearchresult.click();
-        await this.deleteProductButton.click();
-        await browser.wait(protractor.ExpectedConditions.presenceOf(this.confirmationOfDeliting), 5000, ' Confirmation Of Deliting Element taking too long to appear in the DOM');
-        await this.confirmationOfDeliting.click();
-        
-    }
-
-   
+        await allure.createStep("Delete created product",  async () => {
+            await this.productSearchresult.click();
+            await this.deleteProductButton.click();
+            await browser.wait(protractor.ExpectedConditions.presenceOf(this.confirmationOfDeliting), 5000, ' Confirmation Of Deliting Element taking too long to appear in the DOM');
+            await this.confirmationOfDeliting.click(); 
+        })();         
+       
+    }  
 
 }
 

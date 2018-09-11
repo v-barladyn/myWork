@@ -1,5 +1,4 @@
 import WebButton from "../controls/web.button";
-import WebTextInput from "../controls/web.input";
 import WebTextView from "../controls/web.label";
 browser.ignoreSynchronization = true;
 
@@ -20,12 +19,13 @@ class HeaderPage {
     }
     
 
-    async switchToAdminTab(){  
-        await this.adminTab.click();       
-        expect(await this.productTab.getLabel()).toEqual(this.tabLabel);        
-    }   
-  
-
+    async switchToAdminTab(){ 
+        await allure.createStep("Swich to admin tab",  async () => { 
+            await this.adminTab.click();       
+            expect(await this.productTab.getLabel()).toEqual(this.tabLabel);
+        })();
+        
+    }
 }
 
 export default new HeaderPage();

@@ -5,15 +5,14 @@ require("babel-register")({
 exports.config = {
 
     jasmineNodeOpts: {
-        defaultTimeoutInterval: 60000
+        defaultTimeoutInterval: 90000
     },
 
     onPrepare: function() {
         let AllureReporter = require('jasmine-allure-reporter');
     jasmine.getEnv().addReporter(new AllureReporter());
-    jasmine.getEnv().afterEach(function(done){
-       
-        console.log('11111111111111111' + jasmine.getEnv());
+    
+    jasmine.getEnv().afterEach(function(done){   
       browser.takeScreenshot().then(function (png) {
         allure.createAttachment('Screenshot', function () {
           return new Buffer(png, 'base64')
@@ -23,12 +22,13 @@ exports.config = {
     
     });
       },
-
+    
+    //restartBrowserBetweenTests: true,
     SELENIUM_PROMISE_MANAGER: 0,
     directConnect: false,
     framework: "jasmine2",
-    allScriptsTimeout: 60000,
-    getPageTimeout: 60000,
+    allScriptsTimeout: 90000,
+    getPageTimeout: 00000,
     seleniumAddress: 'http://localhost:4444/wd/hub',
     suites : { 
         authenticationNegative: ["../test_specs/authentication/negative/*.js"],
@@ -36,8 +36,7 @@ exports.config = {
         createProduct: ["../test_specs/administration/product/*.js"]
                 
     },
-    capabilities: {
-        browserName: "chrome"
-    }
-
+   capabilities: {
+       browserName: "chrome"
+   }
 };
