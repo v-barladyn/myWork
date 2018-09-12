@@ -28,7 +28,7 @@ exports.config = {
     directConnect: false,
     framework: "jasmine2",
     allScriptsTimeout: 90000,
-    getPageTimeout: 00000,
+    getPageTimeout: 90000,
     seleniumAddress: 'http://localhost:4444/wd/hub',
     suites : { 
         authenticationNegative: ["../test_specs/authentication/negative/*.js"],
