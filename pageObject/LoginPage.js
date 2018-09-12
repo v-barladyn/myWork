@@ -70,22 +70,22 @@ class LoginPage {
             expect(await browser.getCurrentUrl()).toEqual(this.url);
         })();
     }
-
-    async logIn(){
-        await this.opensSite();
-
-        await allure.createStep("Click log in button",   async () => {
+    
+    async openLoginForm(){
+        await allure.createStep("Open login form",   async () => {
             await this.loginButton.click();
         })();
+    }
+
+    async logIn(email, password){          
         
         await allure.createStep("Input email end password",   async () => {        
-            await this.inputEmail.sendKeys(this.email);
-            await this.inputPassword.sendKeys(this.password);
+            await this.inputEmail.sendKeys(email);
+            await this.inputPassword.sendKeys(password);
         })();
 
         await allure.createStep("Click sign in button",   async () => {        
-            await this.signInButton.click();
-            expect(await this.checkNameAfterLogIn.getLabel()).toEqual(this.pageLabel); 
+            await this.signInButton.click();           
         })();
  
     }

@@ -27,7 +27,7 @@ class ProductPage  {
     }
 
     get productFamilyArea(){
-        return new WebButton(element(by.xpath("//button[contains(text(),'No product family')]")), "Choose product family");
+        return new WebButton(element(by.xpath("//button[contains(text(),'No product family')]/span")), "Choose product family");
     }
 
     get searchProducFamily(){
@@ -69,12 +69,22 @@ class ProductPage  {
 
 
     async addNewProduct(){
-        await allure.createStep("Create new product",  async () => {                    
+
+        await allure.createStep("Click on add New product",  async () => {
             await this.addNewProd.click();
+        })();
+
+        await allure.createStep("Input product name",  async () => {
             await this.inputProdactName.sendKeys(this.productName);
+        })();
+
+        await allure.createStep("Set product family",  async () => {
             await this.productFamilyArea.click();       
             await this.searchProducFamily.sendKeys(this.familyName);
             await this.setProductFamily.click();
+        })();
+
+        await allure.createStep("Save product",  async () => {
             await this.savePruductButton.click();        
             await browser.wait(protractor.ExpectedConditions.presenceOf(this.noticeSuccessfullyCreated), 5000, ' Notice Successfully Created Element taking too long to appear in the DOM');
         })();
@@ -83,9 +93,7 @@ class ProductPage  {
 
     async searchForProduct(){
         await allure.createStep("Search for created product",  async () => {
-
             await this.productSerchfield.sendKeys(this.productName);
-            expect(await this.productSearchresult.getLabel()).toEqual(this.productName);
         })();         
     }
 
