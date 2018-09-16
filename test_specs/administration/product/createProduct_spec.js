@@ -4,15 +4,30 @@ import HeaderPage from "../../../pageObject/HeaderPage"
 
 describe('Product creation > ', () => {
 
-    it('Creating New product', async () => {
+    xit('Creating New product', async () => {
 
         await LoginPage.opensSite();
         await LoginPage.openLoginForm();        
         await LoginPage.logIn(LoginPage.email, LoginPage.password);        
         await HeaderPage.switchToAdminTab();
         await ProductPage.addNewProduct();       
-        await ProductPage.searchForProduct();
+        await ProductPage.searchForProduct(ProductPage.productName);
         expect(await ProductPage.productSearchresult.getLabel()).toEqual(ProductPage.productName);
+        await LoginPage.logOut();
+
+    });
+    
+    it('Delete   product', async () => {
+
+        await LoginPage.opensSite();
+        await LoginPage.openLoginForm();        
+        await LoginPage.logIn(LoginPage.email, LoginPage.password);        
+        await HeaderPage.switchToAdminTab();
+        await ProductPage.searchForProduct(ProductPage.productName);
+        await ProductPage.deleteProduct();
+        await ProductPage.searchForProduct(ProductPage.productName);    
+        
+        expect(await ProductPage.productSearchresult.getLabel()).toEqual('');
 
     });        
 });

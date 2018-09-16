@@ -31,8 +31,8 @@ exports.config = {
     getPageTimeout: 90000,
     seleniumAddress: 'http://localhost:4444/wd/hub',
     suites : { 
-        authenticationNegative: ["../test_specs/authentication/negative/*.js"],
-        authenticationPositive: ["../test_specs/authentication/positive/*.js"],
+        //authenticationNegative: ["../test_specs/authentication/negative/*.js"],
+        //authenticationPositive: ["../test_specs/authentication/positive/*.js"]
         createProduct: ["../test_specs/administration/product/*.js"]
                 
     },

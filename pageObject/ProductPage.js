@@ -1,6 +1,7 @@
 import WebButton from "../controls/web.button";
 import WebTextInput from "../controls/web.input";
 import WebTextView from "../controls/web.label";
+import Utils from "./Utils";
 
 browser.ignoreSynchronization = true;
 
@@ -51,7 +52,7 @@ class ProductPage  {
     }
 
     get deleteProductButton(){
-        return new  WebButton(element(by.xpath("/html/body/app/main/administration/div[2]/div/div/projects/div/div[1]/div[2]/project/div/div[1]/div/div[1]/div[2]/button[1]")), "Delete Button");
+        return element(by.xpath("/html/body/app/main/administration/div[2]/div/div/projects/div/div[1]/div[2]/project/div/div[1]/div/div[1]/div[2]/button[1]"));
     }
 
     get productName(){
@@ -63,7 +64,7 @@ class ProductPage  {
     }
 
     get confirmationOfDeliting(){
-        return element(by.buttonText('Delete'));
+        return element(by.xpath("//div/button[contains(text(),'Delete')][@aria-label='Close']"));
     }
 
 
@@ -91,21 +92,29 @@ class ProductPage  {
     
     }    
 
-    async searchForProduct(){
+    async searchForProduct(product){
         await allure.createStep("Search for created product",  async () => {
-            await this.productSerchfield.sendKeys(this.productName);
+            await this.productSerchfield.sendKeys(product);
         })();         
     }
 
     async deleteProduct(){
         await allure.createStep("Delete created product",  async () => {
             await this.productSearchresult.click();
-            await this.deleteProductButton.click();
-            await browser.wait(protractor.ExpectedConditions.presenceOf(this.confirmationOfDeliting), 5000, ' Confirmation Of Deliting Element taking too long to appear in the DOM');
+            await this.deleteProductButton.click();            
+            await this.waitForElement(this.confirmationOfDeliting);
+            await browser.sleep(3000); 
             await this.confirmationOfDeliting.click(); 
         })();         
        
-    }  
+    }
+    
+    async waitForElement(elem) {
+        await browser.wait(protractor.ExpectedConditions.presenceOf(elem), 5000, 'Element taking too long to appear in the DOM');
+        return elem;
+    }
+
+  
 
 }
 
