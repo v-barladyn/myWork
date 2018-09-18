@@ -13,6 +13,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node node_modules/protractor/bin/webdriver-manager update",
     "posttest": "allure generate allure-results --clean -o allure-report"
   },
   "repository": {
