@@ -27,7 +27,7 @@ describe('Product creation > ', () => {
         await ProductPage.deleteProduct();
         await ProductPage.searchForProduct(ProductPage.productName);    
         
-        expect(await ProductPage.productSearchresult.getLabel()).toEqual('');
+        expect(await ProductPage.noResultsFoundAfterSearch.getLabel()).toEqual(ProductPage.noResults);
 
     });        
 });

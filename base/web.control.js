@@ -1,4 +1,4 @@
-class WebControl {
+export default class WebControl {
 
     constructor(baseControlWebElement, title) {
         if (new.target === WebControl) {
@@ -29,4 +29,4 @@ class WebControl {
     }    
 }
 
-module.exports = WebControl;
+
