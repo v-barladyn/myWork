@@ -112,15 +112,12 @@ class ProductPage  {
     }
 
     async deleteProduct(){
-        await allure.createStep("Delete created product",  async () => {
-            
-            await browser.sleep(3000);
+        await allure.createStep("Delete created product",  async () => {            
 
             await this.productSearchresult.click();
             await this.deleteProductButton.click();            
             await browser.wait(protractor.ExpectedConditions.elementToBeClickable(this.confirmationOfDeliting), 5000, ' Notice Successfully Deleted Element taking too long to appear in the DOM');
             await this.confirmationOfDeliting.click();
-            await browser.sleep(2000);
 
             await browser.wait(protractor.ExpectedConditions.presenceOf(this.noticeSuccessfullyDeleted), 5000, ' Notice Successfully Deleted Element taking too long to appear in the DOM');
  

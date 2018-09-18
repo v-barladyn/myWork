@@ -25,8 +25,7 @@ describe('Product creation > ', () => {
         await HeaderPage.switchToAdminTab();
         await ProductPage.searchForProduct(ProductPage.productName);
         await ProductPage.deleteProduct();
-        await ProductPage.searchForProduct(ProductPage.productName);    
-        
+        await ProductPage.searchForProduct(ProductPage.productName);       
         expect(await ProductPage.noResultsFoundAfterSearch.getLabel()).toEqual(ProductPage.noResults);
 
     });        
