@@ -40,9 +40,9 @@ exports.config = {
          //authenticationNegative: ["../test_specs/authentication/negative/*.js"],
          //authenticationPositive: ["../test_specs/authentication/positive/*.js"],
          //createProductPossitive: ["../test_specs/administration/product/create/possitive/*.js"],
-         //createProductNegative: ["../test_specs/administration/product/create/negative/*.js"],
+         createProductNegative: ["../test_specs/administration/product/create/negative/*.js"],
          //editProduct: ["../test_specs/administration/product/edit/*.js"],
-         deleteProductPossitive: ["../test_specs/administration/product/delete/possitive/*.js"]
+         //deleteProductPossitive: ["../test_specs/administration/product/delete/possitive/*.js"]
                 
     },
    capabilities: {

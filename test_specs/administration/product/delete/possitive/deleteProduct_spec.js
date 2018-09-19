@@ -2,7 +2,7 @@ import ProductPage from "../../../../../pageObject/ProductPage";
 import LoginPage from  "../../../../../pageObject/LoginPage";
 import HeaderPage from "../../../../../pageObject/HeaderPage"
 
-describe('Product creation > ', () => {
+describe('Product Deleting > ', () => {
     
     it('Delete   product', async () => {
         await LoginPage.opensSite();

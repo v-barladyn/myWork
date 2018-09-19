@@ -83,6 +83,21 @@ class ProductPage  {
         return element(by.xpath("//button[contains(text(),'Delete')][@aria-label='Close']"));
     }
 
+    get errorWhenNameIsBlanck(){
+        return new WebTextView(element(by.xpath("//div[@class='form-group read-only has-error']/div")), "Error when Product Name is blanck");
+    }
+    get textErrorWhenNameIsBlanck(){
+        return 'Name is required.';
+    }
+
+    get errorWhenFamilyIsBlanck(){
+        return new WebTextView(element(by.xpath("//div[@class='edit-poduct-family-list']/div")), "Error when product family is blanck");
+    }
+
+    get textErrorWhenFamilyIsBlanck(){
+        return "Product Family is required.";
+    }
+
 
 
     async addNewProduct(name, family){
