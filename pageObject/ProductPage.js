@@ -75,31 +75,34 @@ class ProductPage  {
         return 'AQA';
     }
 
+    get blanckFamilyName(){
+        return '';
+    }
+
     get confirmationOfDeliting(){
         return element(by.xpath("//button[contains(text(),'Delete')][@aria-label='Close']"));
     }
 
 
 
-    async addNewProduct(){
+    async addNewProduct(name, family){
 
         await allure.createStep("Click on add New product",  async () => {
             await this.addNewProd.click();
         })();
 
         await allure.createStep("Input product name",  async () => {
-            await this.inputProdactName.sendKeys(this.productName);
+            await this.inputProdactName.sendKeys(name);
         })();
 
         await allure.createStep("Set product family",  async () => {
             await this.productFamilyArea.click();       
-            await this.searchProducFamily.sendKeys(this.familyName);
+            await this.searchProducFamily.sendKeys(family);
             await this.setProductFamily.click();
         })();
 
         await allure.createStep("Save product",  async () => {
-            await this.savePruductButton.click();        
-            await browser.wait(protractor.ExpectedConditions.presenceOf(this.noticeSuccessfullyCreated), 5000, ' Notice Successfully Created Element taking too long to appear in the DOM');
+            await this.savePruductButton.click();            
         })();
     
     }    
@@ -112,25 +115,17 @@ class ProductPage  {
     }
 
     async deleteProduct(){
-        await allure.createStep("Delete created product",  async () => {            
+        await allure.createStep("Delete created product",  async () => {   
 
             await this.productSearchresult.click();
-            await this.deleteProductButton.click();            
-            await browser.wait(protractor.ExpectedConditions.elementToBeClickable(this.confirmationOfDeliting), 5000, ' Notice Successfully Deleted Element taking too long to appear in the DOM');
-            await this.confirmationOfDeliting.click();
-
-            await browser.wait(protractor.ExpectedConditions.presenceOf(this.noticeSuccessfullyDeleted), 5000, ' Notice Successfully Deleted Element taking too long to appear in the DOM');
- 
+            await this.deleteProductButton.click();
+            await Utils.waitForElmToBeClickable(this.confirmationOfDeliting);
+            await browser.sleep(3000);                   
+            await this.confirmationOfDeliting.click();                       
+            await Utils.presenceOfElement(this.noticeSuccessfullyDeleted);    
         })();         
        
     }
-    
-    async waitForElement(elem) {
-        await browser.wait(protractor.ExpectedConditions.presenceOf(elem), 5000, 'Element taking too long to appear in the DOM');
-        return elem;
-    }
-
-  
 
 }
 

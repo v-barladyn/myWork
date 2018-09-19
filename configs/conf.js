@@ -27,7 +27,7 @@ exports.config = {
         }));
     },
     
-    //restartBrowserBetweenTests: true,
+    restartBrowserBetweenTests: true,
     //SELENIUM_PROMISE_MANAGER: 0,
     directConnect: false,
     framework: "jasmine2",
@@ -37,9 +37,12 @@ exports.config = {
 
     
      suites : { 
-         authenticationNegative: ["../test_specs/authentication/negative/*.js"],
-         authenticationPositive: ["../test_specs/authentication/positive/*.js"]
-       //  createProduct: ["../test_specs/administration/product/*.js"]
+         //authenticationNegative: ["../test_specs/authentication/negative/*.js"],
+         //authenticationPositive: ["../test_specs/authentication/positive/*.js"],
+         //createProductPossitive: ["../test_specs/administration/product/create/possitive/*.js"],
+         //createProductNegative: ["../test_specs/administration/product/create/negative/*.js"],
+         //editProduct: ["../test_specs/administration/product/edit/*.js"],
+         deleteProductPossitive: ["../test_specs/administration/product/delete/possitive/*.js"]
                 
     },
    capabilities: {

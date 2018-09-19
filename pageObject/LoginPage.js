@@ -29,7 +29,7 @@ class LoginPage {
     }
 
     get logOutButton(){
-        return new WebTextView(element(by.xpath("//ul/li/a[@id='single-button']")), 'Logout Button');
+        return new WebTextView(element(by.xpath("//ul/li/a[@id='single-button']/span")), 'Logout Button');
     }
 
     get signOut(){
@@ -54,9 +54,17 @@ class LoginPage {
     get wrongPassword(){
         return 'qz7#(Jv';
     }
+
+    get blanckPassword(){
+        return '';
+    }
    
     get errorLoginwithWrongCredentials(){
         return element(by.xpath("//span[contains(text(),'Login or password is not correct')]"))
+    }
+
+    get errorTextAfterwongLogin(){
+        return 'Login or password is not correct';
     }
 
     get checkLogInButton(){

@@ -1,45 +1,13 @@
  const timeout = 5000;
+ const EC = protractor.ExpectedConditions;
 
  class Utils  {
     constructor(){
       
     }
 
-    isElmVisible(elementFinder, waitTimeout) {
-        let timeout = waitTimeout || shortTimeout;
-        browser.manage().timeouts().implicitlyWait(0);
-        return browser.wait(this.isVisible(elementFinder), timeout).then(
-            () => { browser.manage().timeouts().implicitlyWait(implicitlyTimeout); return true; },
-            () => { browser.manage().timeouts().implicitlyWait(implicitlyTimeout); return false; }
-        );
-    }
-
-    /**
-     * Check if elements present and displayed without wait. 'No element exception' safe.
-     * @param elementArrayFinder - elements array locator.
-     * @returns {promise.Promise<any>}
-     */
-    isElementsDisplayed(elementArrayFinder) {
-        let allElmsDisplayed = true;
-        browser.manage().timeouts().implicitlyWait(0);
-        return elementArrayFinder.count().then((count) => {
-            if (count > 0) {
-                return elementArrayFinder.each((item) => {
-                    item.isDisplayed().then((isDisplayed) => {
-                        if (isDisplayed === false) {
-                            allElmsDisplayed = false;
-                        }
-                    });
-                }).then(() => {
-                    browser.manage().timeouts().implicitlyWait(implicitlyTimeout);
-                    return allElmsDisplayed;
-                });
-            } else {
-                browser.manage().timeouts().implicitlyWait(implicitlyTimeout);
-                return false;
-            }
-        });
-    }
+    
+   
    
     waitForElmToBeClickable(elementFinder, timeout) {
         return browser.wait(this.isClickable(elementFinder), timeout);
@@ -65,13 +33,18 @@
         return protractor.ExpectedConditions.elementToBeClickable(locator);
     }
 
-    hasText(locator, text) {
-        return protractor.ExpectedConditions.textToBePresentInElement(locator, text);
-    }
+   
+    async elementIsClickable(locator) {
+        return await browser.wait(EC.elementToBeClickable(locator), timeout, "Element is not clicable");
+    }       
 
-    and(arrayOfFunctions) {
-        return protractor.ExpectedConditions.and(arrayOfFunctions);
-    }
+    async elementHasText(locator, text) {       
+        return await browser.wait(EC.textToBePresentInElement(locator, text), timeout, "No such text in the element");
+    }   
+
+    async presenceOfElement(locator) {
+        return await browser.wait(EC.presenceOf(locator), timeout, 'Element taking too long to appear in the DOM');
+    }       
 }
 
 export default new Utils();
