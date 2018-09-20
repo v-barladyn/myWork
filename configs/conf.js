@@ -37,12 +37,12 @@ exports.config = {
 
     
      suites : { 
-         authenticationNegative: ["../test_specs/authentication/negative/*.js"],
-         authenticationPositive: ["../test_specs/authentication/positive/*.js"],
-         createProductPossitive: ["../test_specs/administration/product/create/possitive/*.js"],
-         createProductNegative: ["../test_specs/administration/product/create/negative/*.js"],
+         //authenticationNegative: ["../test_specs/authentication/negative/*.js"],
+         //authenticationPositive: ["../test_specs/authentication/positive/*.js"],
+         //createProductPossitive: ["../test_specs/administration/product/create/possitive/*.js"],
+         //createProductNegative: ["../test_specs/administration/product/create/negative/*.js"],
          editProductPositive: ["../test_specs/administration/product/edit/possitive/*.js"],
-         deleteProductPossitive: ["../test_specs/administration/product/delete/possitive/*.js"]
+         //deleteProductPossitive: ["../test_specs/administration/product/delete/possitive/*.js"]
                 
     },
    capabilities: {

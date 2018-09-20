@@ -63,6 +63,12 @@ class ProductPage  {
         return new WebTextView(element(by.xpath("//a[contains(text(), '" + this.productName + "')]")), "Find product");        
     }
 
+    get productSearchresultAfterEdit(){
+        return new WebTextView(element(by.xpath("//a[contains(text(), '" + this.productNameForEdit + "')]")), "Find product");        
+    }
+
+
+
     get productSearchresults(){
         return element(by.xpath("//a[contains(text(), '" + this.productName + "')]"));        
     }
@@ -173,9 +179,8 @@ class ProductPage  {
 
     async editProductName(productName, addSymbolToName){
         await  this.searchForProduct(productName);       
-        await allure.createStep("Edit  product name, add adited syfix",  async () => {
-            await browser.sleep(1000);              
-            await this.productSearchresult.click();
+        await allure.createStep("Edit  product name, add adited syfix",  async () => {                      
+            await this.productSearchresultAfterEdit.click();
             await this.editProductButton.click();          
             await this.inputProdactName.sendKeys(productName + addSymbolToName);
             await this.savePruductAfterEditButton.click();                                       
