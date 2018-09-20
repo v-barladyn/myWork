@@ -19,6 +19,10 @@ class ProductPage  {
         return element(by.xpath("//div/span[contains(text(),'Product " + this.productName + " successfully deleted')]"));
     }
 
+    get noticeSucessfullyUpdated(){
+       return element(by.xpath("//div/span[contains(text(),'Product " + this.productNameForEdit + this.addEditYoName + " successfully updated')]"));        
+    }
+
     get addNewProd(){
         return new WebButton(element(by.xpath("//span[contains(text(),'Add New Produc')]")), "Add New Product Tab");
     }
@@ -41,6 +45,14 @@ class ProductPage  {
 
     get savePruductButton(){
         return new WebButton(element(by.css('#saveProductAdd')), "Save button");
+    }
+
+    get savePruductAfterEditButton(){
+        return new WebButton(element(by.css('#saveProductEdit')), "Save button");
+    }
+
+    get editProductButton(){
+        return new WebButton(element(by.xpath("//button[@class='btn gds-btn-icon gds-edit-icon']")), "Edit  button");
     }
 
     get productSerchfield(){
@@ -71,12 +83,20 @@ class ProductPage  {
         return 'vasylbarladyn';
     }
 
+    get productNameForEdit(){
+        return 'productForedit';
+    }  
+
     get familyName(){
         return 'AQA';
     }
 
     get blanckFamilyName(){
         return '';
+    }
+
+    get addEditName(){
+        return ' + edited';
     }
 
     get confirmationOfDeliting(){
@@ -100,6 +120,8 @@ class ProductPage  {
 
 
 
+    // Add new product: @name - product name, @family - product family
+
     async addNewProduct(name, family){
 
         await allure.createStep("Click on add New product",  async () => {
@@ -121,25 +143,44 @@ class ProductPage  {
         })();
     
     }    
+ 
+   // Search for product: @product - current product for search 
 
     async searchForProduct(product){
         await allure.createStep("Search for created product",  async () => {
             await this.productSerchfield.sendKeys(product);
+            await browser.sleep(1000);   
                         
         })();         
     }
-
-    async deleteProduct(){
-        await allure.createStep("Delete created product",  async () => {   
-
+    
+    // delete product: @product - current product for deliting 
+     
+    async deleteProduct(product){
+        await this.searchForProduct(product);
+        await allure.createStep("Delete created product",  async () => {
             await this.productSearchresult.click();
             await this.deleteProductButton.click();
-            await Utils.waitForElmToBeClickable(this.confirmationOfDeliting);
-            await browser.sleep(3000);                   
+            await Utils.elementIsClickable(this.confirmationOfDeliting);
+            await browser.sleep(1000);                   
             await this.confirmationOfDeliting.click();                       
             await Utils.presenceOfElement(this.noticeSuccessfullyDeleted);    
         })();         
        
+    }
+     
+     // edit product name (@productName - cuurent name of the product, @addSymbolToName Extra symbol to add  )
+
+    async editProductName(productName, addSymbolToName){
+        await  this.searchForProduct(productName);       
+        await allure.createStep("Edit  product name, add adited syfix",  async () => {
+            await browser.sleep(1000);              
+            await this.productSearchresult.click();
+            await this.editProductButton.click();          
+            await this.inputProdactName.sendKeys(productName + addSymbolToName);
+            await this.savePruductAfterEditButton.click();                                       
+               
+        })();         
     }
 
 }

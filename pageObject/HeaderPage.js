@@ -20,7 +20,7 @@ class HeaderPage {
     
 
     async switchToAdminTab(){ 
-        await allure.createStep("Swich to admin tab",  async () => { 
+        await allure.createStep("Swich to admin tab",  async () => {            
             await this.adminTab.click();       
             expect(await this.productTab.getLabel()).toEqual(this.tabLabel);
         })();

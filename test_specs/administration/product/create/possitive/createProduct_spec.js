@@ -2,11 +2,12 @@ import ProductPage from "../../../../../pageObject/ProductPage";
 import LoginPage from  "../../../../../pageObject/LoginPage";
 import HeaderPage from "../../../../../pageObject/HeaderPage"
 import Utils from "../../../../../pageObject/Utils"
+browser.ignoreSynchronization = true;
 
 describe('Product creation  ', () => {
 
     it('Creating New product', async () => {
-        await LoginPage.opensSite();
+        await LoginPage.opensSite(LoginPage.url);
         await LoginPage.openLoginForm();        
         await LoginPage.logIn(LoginPage.email, LoginPage.password);        
         await HeaderPage.switchToAdminTab();

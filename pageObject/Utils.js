@@ -4,35 +4,7 @@
  class Utils  {
     constructor(){
       
-    }
-
-    
-   
-   
-    waitForElmToBeClickable(elementFinder, timeout) {
-        return browser.wait(this.isClickable(elementFinder), timeout);
-    }
-
-    isVisible(locator) {
-        return protractor.ExpectedConditions.visibilityOf(locator);
-    }
-
-    isNotVisible(locator) {
-        return protractor.ExpectedConditions.invisibilityOf(locator);
-    }
-
-    inDom(locator) {
-        return protractor.ExpectedConditions.presenceOf(locator);
-    }
-
-    notInDom(locator) {
-        return protractor.ExpectedConditions.stalenessOf(locator);
-    }
-
-    isClickable(locator) {
-        return protractor.ExpectedConditions.elementToBeClickable(locator);
-    }
-
+    }  
    
     async elementIsClickable(locator) {
         return await browser.wait(EC.elementToBeClickable(locator), timeout, "Element is not clicable");

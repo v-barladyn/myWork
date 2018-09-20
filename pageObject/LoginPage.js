@@ -1,6 +1,7 @@
 import WebButton from "../controls/web.button";
 import WebTextInput from "../controls/web.input";
 import WebTextView from "../controls/web.label";
+import Utils from "./Utils";
 browser.ignoreSynchronization = true;
 
 
@@ -70,20 +71,26 @@ class LoginPage {
     get checkLogInButton(){
        return  element(by.css('.login-button'));
     }
-    
+     
+    // open Current site @urr - site to open
 
-    async opensSite(){
+    async opensSite(url){
         await allure.createStep("Open site",  async () => {
-            await browser.get(this.url);
-            expect(await browser.getCurrentUrl()).toEqual(this.url);
+            await browser.get(url);
+            expect(await browser.getCurrentUrl()).toEqual(url);
         })();
     }
     
+
+    // Open login form
+
     async openLoginForm(){
         await allure.createStep("Open login form",   async () => {
             await this.loginButton.click();
         })();
     }
+
+    //Login functiion: @email, @password
 
     async logIn(email, password){          
         
@@ -98,6 +105,8 @@ class LoginPage {
  
     }
     
+    //Log out function
+
     async logOut(){
         await allure.createStep("Click log out button",   async () => {        
             await this.logOutButton.click();  
@@ -105,7 +114,7 @@ class LoginPage {
 
         await allure.createStep("Click sign out button",   async () => {     
             await this.signOut.click();       
-            await browser.wait(protractor.ExpectedConditions.presenceOf(this.checkLogInButton), 5000, 'Wait for element login button');
+            await Utils.presenceOfElement(this.checkLogInButton);
         })();
     }
 }
