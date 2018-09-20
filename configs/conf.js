@@ -4,13 +4,16 @@ require("babel-register")({
 
 exports.config = {
     directConnect:true,
+
     jasmineNodeOpts: {
         defaultTimeoutInterval: 30000
     },
 
-    onPrepare: async function() {
+    onPrepare:  function() {
+        browser.ignoreSynchronization = true;
+        
         let AllureReporter = require('jasmine-allure-reporter');
-        let  originalAddExpectationResult =  await jasmine.Spec.prototype.addExpectationResult;
+        let  originalAddExpectationResult =   jasmine.Spec.prototype.addExpectationResult;
         jasmine.Spec.prototype.addExpectationResult = function () {
             if (!arguments[0]) {
                 browser.takeScreenshot().then(function (png) {
@@ -21,17 +24,17 @@ exports.config = {
             }
             return originalAddExpectationResult.apply(this, arguments);
         };
-       await jasmine.getEnv().addReporter(originalAddExpectationResult);  
-       await jasmine.getEnv().addReporter(new AllureReporter({
+
+        jasmine.getEnv().addReporter(new AllureReporter({
             resultsDir: 'allure-results',
         }));
     },
     
-    restartBrowserBetweenTests: true,
+    //restartBrowserBetweenTests: true,
     //SELENIUM_PROMISE_MANAGER: 0,
     directConnect: false,
     framework: "jasmine2",
-    allScriptsTimeout: 30000,
+    allScriptsTimeout: 30000,   
     getPageTimeout: 30000,
     //seleniumAddress: 'http://localhost:4444/wd/hub',
 
@@ -40,8 +43,8 @@ exports.config = {
          //authenticationNegative: ["../test_specs/authentication/negative/*.js"],
          //authenticationPositive: ["../test_specs/authentication/positive/*.js"],
          //createProductPossitive: ["../test_specs/administration/product/create/possitive/*.js"],
-         //createProductNegative: ["../test_specs/administration/product/create/negative/*.js"],
-         editProductPositive: ["../test_specs/administration/product/edit/possitive/*.js"],
+         createProductNegative: ["../test_specs/administration/product/create/negative/*.js"],
+         //editProductPositive: ["../test_specs/administration/product/edit/possitive/*.js"],
          //deleteProductPossitive: ["../test_specs/administration/product/delete/possitive/*.js"]
                 
     },

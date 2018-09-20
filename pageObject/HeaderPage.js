@@ -1,6 +1,6 @@
 import WebButton from "../controls/web.button";
 import WebTextView from "../controls/web.label";
-browser.ignoreSynchronization = true;
+
 
 class HeaderPage {
     constructor(){ 

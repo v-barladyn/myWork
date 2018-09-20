@@ -1,7 +1,7 @@
 import ProductPage from "../../../../../pageObject/ProductPage";
 import LoginPage from  "../../../../../pageObject/LoginPage";
 import HeaderPage from "../../../../../pageObject/HeaderPage"
-browser.ignoreSynchronization = true;
+
 
 describe('Negative: Create product without family and name  ', () => {
 

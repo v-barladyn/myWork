@@ -9,7 +9,7 @@ describe('Product Editing > ', () => {
     it('Etit   product name', async () => {
         await LoginPage.opensSite(LoginPage.url);
         await LoginPage.openLoginForm();        
-        await LoginPage.logIn(LoginPage.email, LoginPage.password);        
+        await LoginPage.logIn(LoginPage.email, LoginPage.password);                
         await HeaderPage.switchToAdminTab();       
         await ProductPage.editProductName(ProductPage.productNameForEdit, ProductPage.addEditName);               
         //await Utils.presenceOfElement(ProductPage.noticeSucessfullyUpdated);

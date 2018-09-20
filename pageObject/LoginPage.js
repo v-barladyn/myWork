@@ -2,7 +2,6 @@ import WebButton from "../controls/web.button";
 import WebTextInput from "../controls/web.input";
 import WebTextView from "../controls/web.label";
 import Utils from "./Utils";
-browser.ignoreSynchronization = true;
 
 
 class LoginPage {
