@@ -1,0 +1,1 @@
+D:\QA\1\apache-jmeter-5.0\bin\ApacheJMeter.jar -g summary.csv -o report
